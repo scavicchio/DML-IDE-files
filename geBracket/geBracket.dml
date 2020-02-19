@@ -38,7 +38,7 @@
 
         <simulation id="bracket_sim" volume="geBracket">
         <lattice fill="space"
-                unit="50, 50, 50"
+                unit="5, 5, 5"
                 bardiam="5, 5, 5"
                 material="titanium"
         />
