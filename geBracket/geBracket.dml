@@ -23,9 +23,6 @@
         alpha="0.5"
         />
 
-        <volume id="load"
-        primitive="stl"
-
                
         <loadcase id="case_1">
                 <anchor volume="anchor" />
