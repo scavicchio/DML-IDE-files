@@ -4,19 +4,22 @@
     <!-- Volumes -->
         <volume id="original" 
             primitive="stl" 
-            url="original.stl" 
+            url="original.stl"
+            units="mm" 
             color="0.2 0.2 0.2"/>
 
         <volume id="anchor" 
             primitive="stl" 
             url="anchor.stl" 
-            color="0 1 0" 
+            color="0 1 0"
+            units="mm" 
             alpha="0.5"/>
 
         <volume id="load" 
             primitive="stl" 
             url="load.stl" 
-            color="0 1 0" 
+            color="0 1 0"
+            units="mm" 
             alpha="0.5"/>
     
     <!-- Materials -->
