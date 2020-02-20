@@ -39,9 +39,10 @@
         <simulation id="bracket_1" volume="original">
         <!-- Lattice -->
                 <lattice fill="space" 
-                 unit="1,1,1" 
+                 unit=".15,.15,.15" 
                  bardiam="1,1,1" 
-                 material="titanium"/>
+                 material="titanium"
+                 />
         
         <!-- Damping -->
                 <damping velocity="0"/>
