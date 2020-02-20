@@ -1,69 +1,49 @@
-<!-- Example of a nylon cube with a small force applied to its corner -->
-<dml version="1.0" units="MKS">
+<<dml version="1.0" units="MKS">
 
-    <!-- Volumes -->
-        <volume id="original" 
-            primitive="stl" 
-            url="original.stl"
-            units="mm" 
-            color="0.2 0.2 0.2"/>
+  <volume id="original"
+    primitive="stl"
+    url="original.stl"
+    units="mm"
+    color="0.5 0.5 0.5"/>
 
-        <volume id="anchor" 
-            primitive="stl" 
-            url="anchor.stl" 
-            color="0 1 0"
-            units="mm" 
-            alpha="0.5"/>
+  <volume id="anchor"
+    primitive="stl"
+    url="anchor.stl"
+    units="mm"
+    color="0.5 0.5 0.5"/>
 
-        <volume id="load" 
-            primitive="stl" 
-            url="load.stl" 
-            color="0 1 0"
-            units="mm" 
-            alpha="0.5"/>
-    
-     <!-- Loadcases -->
-        <loadcase id="case_1">
-              <anchor volume="anchor"/>
-              <force volume="load" magnitude="0, 1000, 0" />
-        </loadcase>
+  <volume id="load"
+    primitive="stl"
+    url="load.stl"
+    units="mm"
+    color="0.5 0.5 0.5"/>
 
-    <!-- Materials -->
-        <material id="titanium" 
-              name="Ti-6AI-4V" 
-              elasticity="113.8 GPa" 
-              yield="903.213 MPa" 
-              density="4.43 gcc"/>
-    
-    
-    <!-- Simulation -->
-        <simulation id="bracket_1" volume="original">
-        <!-- Lattice -->
-                <lattice fill="space" 
-                 unit="0.15,0.15,0.15" 
-                 bardiam="1,1,1" 
-                 material="titanium"
-                 />
-        
-        <!-- Damping -->
-                <damping velocity="0"/>
+  <loadcase id="case_1">
+    <anchor volume="anchor" />
+    <force volume="load" magnitude="0, 1000, 0" />
+  </loadcase>
 
-        <!-- Gravity -->
-                <global acceleration="0.0,-9.8067,0.0"/>        
+  <material id="titanium" 
+          name="Ti-6AI-4V" 
+          elasticity="113.8 GPa" 
+          yield="903.213 MPa" 
+          density="4.43 gcc"/>
 
-        <!-- Load -->
-                <load id="case_1"/>
-        </simulation>
-    
-    <!-- Optimization-->
-        <optimization simulation="bracket_1">
-                <rule method="remove_low_stress" threshold="10%" frequency="1000"/>
-                <stop metric="weight" threshold="25%"/>
-        </optimization>
+  <simulation id="bracket" volume="original">
+  <lattice fill="space" 
+           unit="0.15,0.15,0.15" 
+           bardiam="0.5,0.5,0.5" 
+           material="titanium"/>
 
-   <!-- Output -->
-       <output id="model" simulation="bracket_1">
-                <include volume="load"/>
-                <include volume="anchor"/>
-        </output>
+        <global acceleration="0.0,-9.8067,0.0"/>
+
+  <load id="case_1"/>
+
+  </simulation>
+
+  <optimization simulation="bracket">
+      <rule method="remove_low_stress" threshold="10%" frequency="1000"/>
+      <stop metric="weight" threshold="40%"/>
+  </optimization>
+
 </dml>
