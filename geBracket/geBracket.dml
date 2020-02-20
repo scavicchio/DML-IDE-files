@@ -22,6 +22,12 @@
             units="mm" 
             alpha="0.5"/>
     
+     <!-- Loadcases -->
+        <loadcase id="case_1">
+              <anchor volume="anchor"/>
+              <force volume="load" magnitude="0, 1000, 0" />
+        </loadcase>
+
     <!-- Materials -->
         <material id="titanium" 
               name="Ti-6AI-4V" 
@@ -29,17 +35,12 @@
               yield="903.213 MPa" 
               density="4.43 gcc"/>
     
-    <!-- Loadcases -->
-        <loadcase id="case_1">
-                <force volume="load" 
-               magnitude="0, 1000, 0" />
-        </loadcase>
     
     <!-- Simulation -->
         <simulation id="bracket_1" volume="original">
         <!-- Lattice -->
                 <lattice fill="space" 
-                 unit=".15,.15,.15" 
+                 unit="0.15,0.15,0.15" 
                  bardiam="1,1,1" 
                  material="titanium"
                  />
@@ -57,7 +58,7 @@
     <!-- Optimization-->
         <optimization simulation="bracket_1">
                 <rule method="remove_low_stress" threshold="10%" frequency="1000"/>
-                <stop metric="weight" threshold="40%"/>
+                <stop metric="weight" threshold="25%"/>
         </optimization>
 
    <!-- Output -->
