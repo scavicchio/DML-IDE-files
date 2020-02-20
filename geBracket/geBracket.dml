@@ -42,8 +42,8 @@
   </simulation>
 
   <optimization simulation="bracket">
-      <rule method="remove_low_stress" threshold="10%" frequency="1000"/>
-      <stop metric="weight" threshold="40%"/>
+      <rule method="remove_low_stress" threshold="5%" frequency="1000"/>
+      <stop metric="weight" threshold="15%"/>
   </optimization>
 
 </dml>
