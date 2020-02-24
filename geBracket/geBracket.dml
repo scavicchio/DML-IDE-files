@@ -1,22 +1,27 @@
-<<dml version="1.0" units="MKS">
+<dml version="1.0" units="MKS">
 
-  <volume id="original"
+  <volume id="geBracket"
     primitive="stl"
     url="original.stl"
     units="mm"
-    color="0.5 0.5 0.5"/>
+    color="0.5 0.5 0.5"
+    />
 
   <volume id="anchor"
     primitive="stl"
     url="anchor.stl"
     units="mm"
-    color="0.5 0.5 0.5"/>
+    color="1 0 0"
+    alpha="0.5"
+    />
 
   <volume id="load"
     primitive="stl"
     url="load.stl"
     units="mm"
-    color="0.5 0.5 0.5"/>
+    color="0 1.0 0"
+    alpha="0.5"
+    />
 
   <loadcase id="case_1">
     <anchor volume="anchor" />
@@ -27,23 +32,30 @@
           name="Ti-6AI-4V" 
           elasticity="113.8 GPa" 
           yield="903.213 MPa" 
-          density="4.43 gcc"/>
+          density="4.43 gcc"
+          />
 
-  <simulation id="bracket" volume="original">
-  <lattice fill="space" 
-           unit="0.15,0.15,0.15" 
-           bardiam="0.5,0.5,0.5" 
-           material="titanium"/>
+  <simulation id="bracket_sim" volume="geBracket">
+  <lattice fill="cubic" 
+           unit="0.0035,0.0035,0.0035" 
+           bardiam="0.0005,0.0005,0.0005" 
+           material="titanium"
+           />
 
-        <global acceleration="0.0,-9.8067,0.0"/>
+        <global acceleration="0.0, -9.8067, 0.0"/>
 
   <load id="case_1"/>
 
   </simulation>
 
-  <optimization simulation="bracket">
-      <rule method="remove_low_stress" threshold="5%" frequency="1000"/>
+  <optimization simulation="bracket_sim">
+      <rule method="remove_low_stress" threshold="2.5%" frequency="1000"/>
       <stop metric="weight" threshold="15%"/>
   </optimization>
+
+  <output id="model" simulation="bracket_sim">
+    <include volume="load"/>
+    <include volume="anchor"/>
+    </output>
 
 </dml>
