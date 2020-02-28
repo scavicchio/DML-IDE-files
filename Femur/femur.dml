@@ -1,6 +1,6 @@
 <dml version="1.0" units="MKS">
 
-  <volume id="geBracket"
+  <volume id="original"
     primitive="stl"
     url="original.stl"
     units="mm"
@@ -25,21 +25,22 @@
 
   <loadcase id="case_1">
     <anchor volume="anchor" />
-    <force volume="load" magnitude="0, 1000, 0" />
+    <force volume="load" magnitude="100, 100, 0" />
   </loadcase>
 
-  <material id="titanium" 
-          name="Ti-6AI-4V" 
-          elasticity="113.8 GPa" 
-          yield="903.213 MPa" 
-          density="4.43 gcc"
-          />
 
-  <simulation id="bracket_sim" volume="geBracket">
+
+  <material id="nylon" 
+          name="Nylon 12" 
+          elasticity="4.56 GPa" 
+          yield="44.2 MPa" 
+          density="1.38 gcc"/>
+
+  <simulation id="bracket_sim" volume="original">
   <lattice fill="cubic" 
-           unit="0.0035,0.0035,0.0035" 
+           unit="0.01,0.01,0.01" 
            bardiam="0.0005,0.0005,0.0005" 
-           material="titanium"
+           material="nylon"
            />
 
         <global acceleration="0.0, -9.8067, 0.0"/>
@@ -48,12 +49,12 @@
 
   </simulation>
 
-  <optimization simulation="bracket_sim">
-      <rule method="remove_low_stress" threshold="2.5%" frequency="1000"/>
+  <optimization simulation="femur_sim">
+      <rule method="remove_low_stress" threshold="3%" frequency="5000"/>
       <stop metric="weight" threshold="15%"/>
   </optimization>
 
-  <output id="model" simulation="bracket_sim">
+  <output id="model" simulation="femur_sim">
     <include volume="load"/>
     <include volume="anchor"/>
     </output>
