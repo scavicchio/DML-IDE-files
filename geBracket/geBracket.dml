@@ -25,7 +25,17 @@
 
   <loadcase id="case_1">
     <anchor volume="anchor" />
-    <force volume="load" magnitude="0, 1000, 0" />
+    <force volume="load" magnitude="0, 36000, 0" duration="0.1" />
+  </loadcase>  
+
+<loadcase id="case_2">
+    <anchor volume="anchor" />
+    <force volume="load" magnitude="0, 0, 38000" duration="0.1"/>
+  </loadcase>
+
+  <loadcase id="case_3">
+    <anchor volume="anchor" />
+    <force volume="load" magnitude="0, 30000, 27000" duration="0.1"/>
   </loadcase>
 
   <material id="titanium" 
@@ -36,21 +46,21 @@
           />
 
   <simulation id="bracket_sim" volume="geBracket">
-  <lattice fill="cubic" 
-           unit="0.0035,0.0035,0.0035" 
-           bardiam="0.0005,0.0005,0.0005" 
+  <lattice fill="space" 
+           unit="0.00325,0.00325,0.00325" 
+           bardiam="0.0013,0.0013,0.0013" 
            material="titanium"
            />
 
         <global acceleration="0.0, -9.8067, 0.0"/>
 
-  <load id="case_1"/>
+  <load queue="case_1,case_2,case_3"/>
 
   </simulation>
 
   <optimization simulation="bracket_sim">
-      <rule method="remove_low_stress" threshold="2.5%" frequency="1000"/>
-      <stop metric="weight" threshold="15%"/>
+      <rule method="remove_low_stress" threshold="3%" frequency="20000"/>
+      <stop metric="weight" threshold="18%"/>
   </optimization>
 
   <output id="model" simulation="bracket_sim">

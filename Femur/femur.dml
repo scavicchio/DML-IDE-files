@@ -36,7 +36,7 @@
           yield="44.2 MPa" 
           density="1.38 gcc"/>
 
-  <simulation id="bracket_sim" volume="original">
+  <simulation id="femur_sim" volume="original">
   <lattice fill="cubic" 
            unit="0.01,0.01,0.01" 
            bardiam="0.0005,0.0005,0.0005" 
