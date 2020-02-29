@@ -25,22 +25,22 @@
 
   <loadcase id="case_1">
     <anchor volume="anchor" />
-    <force volume="load" magnitude="100, 100, 0" />
+    <force volume="load" magnitude="0, 10, 0" />
   </loadcase>
 
 
 
-  <material id="nylon" 
-          name="Nylon 12" 
-          elasticity="4.56 GPa" 
-          yield="44.2 MPa" 
-          density="1.38 gcc"/>
+  <material id="plastic" 
+          name="PLA" 
+          elasticity="2.3465 GPa" 
+          yield="49.5 MPa" 
+          density="1.24 gcc"/>
 
   <simulation id="femur_sim" volume="original">
-  <lattice fill="cubic" 
-           unit="0.01,0.01,0.01" 
-           bardiam="0.0005,0.0005,0.0005" 
-           material="nylon"
+  <lattice fill="space" 
+           unit="0.0038,0.0038,0.0038" 
+           bardiam="0.003,0.003,0.003" 
+           material="plastic"
            />
 
         <global acceleration="0.0, -9.8067, 0.0"/>
@@ -50,8 +50,9 @@
   </simulation>
 
   <optimization simulation="femur_sim">
-      <rule method="remove_low_stress" threshold="3%" frequency="5000"/>
-      <stop metric="weight" threshold="15%"/>
+      <rule method="remove_low_stress" threshold="5%" 
+frequency="2000"/>
+      <stop metric="weight" threshold="5%"/>
   </optimization>
 
   <output id="model" simulation="femur_sim">
