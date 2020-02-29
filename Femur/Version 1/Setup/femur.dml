@@ -38,8 +38,8 @@
 
   <simulation id="femur_sim" volume="original">
   <lattice fill="space" 
-           unit="0.003,0.003,0.003" 
-           bardiam="0.002,0.002,0.002" 
+           unit="0.0038,0.0038,0.0038" 
+           bardiam="0.003,0.003,0.003" 
            material="plastic"
            />
 
@@ -52,7 +52,7 @@
   <optimization simulation="femur_sim">
       <rule method="remove_low_stress" threshold="5%" 
 frequency="2000"/>
-      <stop metric="weight" threshold="3%"/>
+      <stop metric="weight" threshold="5%"/>
   </optimization>
 
   <output id="model" simulation="femur_sim">
