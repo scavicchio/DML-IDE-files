@@ -38,9 +38,10 @@
 
   <simulation id="femur_sim" volume="original">
   <lattice fill="space" 
-           unit="0.0028,0.0028,0.0028" 
-           bardiam="0.00225,0.00225,0.00225" 
+           unit="0.003,0.003,0.003" 
+           bardiam="0.002,0.002,0.002" 
            material="plastic"
+           hull="0"
            />
 
         <global acceleration="0.0, -9.8067, 0.0"/>

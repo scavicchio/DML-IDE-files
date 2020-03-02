@@ -1,0 +1,64 @@
+<dml version="1.0" units="MKS">
+
+  <volume id="original"
+    primitive="stl"
+    url="original.stl"
+    units="mm"
+    color="0.5 0.5 0.5"
+    />
+
+  <volume id="anchor"
+    primitive="stl"
+    url="anchor.stl"
+    units="mm"
+    color="1 0 0"
+    alpha="0.5"
+    />
+
+  <volume id="load"
+    primitive="stl"
+    url="load.stl"
+    units="mm"
+    color="0 1.0 0"
+    alpha="0.5"
+    />
+
+  <loadcase id="case_1">
+    <anchor volume="anchor" />
+    <force volume="load" magnitude="0, 20, 0" />
+  </loadcase>
+
+
+
+  <material id="plastic" 
+          name="PLA" 
+          elasticity="2.3465 GPa" 
+          yield="49.5 MPa" 
+          density="1.24 gcc"/>
+
+  <simulation id="sim" volume="original">
+  <lattice fill="space" 
+           unit="0.01,0.01,0.01" 
+           bardiam="0.002,0.002,0.002" 
+           material="plastic"
+           hull="0"
+           />
+
+        <global acceleration="0.0, -9.8067, 0.0"/>
+
+  <load id="case_1"/>
+
+  </simulation>
+
+  <optimization simulation="sim">
+      <rule method="remove_low_stress" threshold="4%" 
+frequency="20000"/>
+      <stop metric="weight" threshold="5%"/>
+  </optimization>
+
+  <output id="model" simulation="sim">
+    <include volume="load"/>
+    <include volume="anchor"/>
+    </output>
+
+</dml>
