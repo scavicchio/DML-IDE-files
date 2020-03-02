@@ -25,7 +25,7 @@
 
   <loadcase id="case_1">
     <anchor volume="anchor" />
-    <force volume="load" magnitude="0, 20, 0" />
+    <force volume="load" magnitude="20, -20, 0" />
   </loadcase>
 
 
