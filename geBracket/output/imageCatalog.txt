@@ -1,0 +1,30 @@
+IMAGE --- dmlFrame_0
+Bars: 263545
+Time: 0.04 s
+Weight (start): 2128.1339
+Weight (current): 1710.8143
+Weight remaining: 80.39%
+Deflection: 0.0001 m
+Optimization iterations: 7
+Optimization threshold: 3.0% bars per iteration
+
+IMAGE --- dmlFrame_1
+Bars: 255639
+Time: 0.04 s
+Weight (start): 2128.1339
+Weight (current): 1710.8143
+Weight remaining: 80.39%
+Deflection: 0.0003 m
+Optimization iterations: 8
+Optimization threshold: 3.0% bars per iteration
+
+IMAGE --- dmlFrame_2
+Bars: 226317
+Time: 0.06 s
+Weight (start): 2128.1339
+Weight (current): 1511.1765
+Weight remaining: 71.01%
+Deflection: 0.0003 m
+Optimization iterations: 12
+Optimization threshold: 3.0% bars per iteration
+
