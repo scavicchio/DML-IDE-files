@@ -39,7 +39,7 @@
   <simulation id="sim" volume="original">
   <lattice fill="space" 
            unit="0.01,0.01,0.01" 
-           bardiam="0.002,0.002,0.002" 
+           bardiam="0.0035,0.0035,0.0035" 
            material="plastic"
            hull="0"
            />
@@ -51,9 +51,9 @@
   </simulation>
 
   <optimization simulation="sim">
-      <rule method="remove_low_stress" threshold="4%" 
+      <rule method="remove_low_stress" threshold="5%" 
 frequency="20000"/>
-      <stop metric="weight" threshold="5%"/>
+      <stop metric="weight" threshold="20%"/>
   </optimization>
 
   <output id="model" simulation="sim">
