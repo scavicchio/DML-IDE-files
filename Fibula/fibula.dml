@@ -51,9 +51,9 @@
   </simulation>
 
   <optimization simulation="sim">
-      <rule method="remove_low_stress" threshold="5%" 
+      <rule method="remove_low_stress" threshold="3%" 
 frequency="20000"/>
-      <stop metric="weight" threshold="15%"/>
+      <stop metric="weight" threshold="7%"/>
   </optimization>
 
   <output id="model" simulation="sim">
