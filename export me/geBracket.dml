@@ -25,31 +25,31 @@
 
   <loadcase id="case_1">
     <anchor volume="anchor" />
-    <force volume="load" magnitude="0, 36000, 0" duration="0.1" />
+    <force volume="load" magnitude="0, 3600, 0" duration="0.5" />
   </loadcase>  
 
 <loadcase id="case_2">
     <anchor volume="anchor" />
-    <force volume="load" magnitude="0, 0, 38000" duration="0.1"/>
+    <force volume="load" magnitude="0, 0, 3800" duration="0.5"/>
   </loadcase>
 
   <loadcase id="case_3">
     <anchor volume="anchor" />
-    <force volume="load" magnitude="0, 30000, 27000" duration="0.1"/>
+    <force volume="load" magnitude="0, 3000, 2700" duration="0.5"/>
   </loadcase>
 
-  <material id="titanium" 
-          name="Ti-6AI-4V" 
-          elasticity="113.8 GPa" 
-          yield="903.213 MPa" 
-          density="4.43 gcc"
+  <material id="steel" 
+          name="AISI Type 304" 
+          elasticity="193 GPa" 
+          yield="215 MPa" 
+          density="8 gcc"
           />
 
   <simulation id="bracket_sim" volume="geBracket">
   <lattice fill="space" 
            unit="0.005,0.005,0.005" 
-           bardiam="0.0015,0.0015,0.0015" 
-           material="titanium"
+           bardiam="0.001, 0.001, 0.001" 
+           material="steel"
            />
 
         <global acceleration="0.0, -9.8067, 0.0"/>
