@@ -2,7 +2,7 @@
 
   <volume id="geBracket"
     primitive="stl"
-    url="original.stl"
+    url="original_simple.stl"
     units="mm"
     color="0.5 0.5 0.5"
     />
@@ -25,12 +25,12 @@
 
   <loadcase id="case_1">
     <anchor volume="anchor" />
-    <force volume="load" magnitude="0, 3600, 0" duration="0.5" />
+    <force volume="load" magnitude="0, 360, 0" duration="0.5" />
   </loadcase>  
 
 <loadcase id="case_2">
     <anchor volume="anchor" />
-    <force volume="load" magnitude="0, 0, 3800" duration="0.5"/>
+    <force volume="load" magnitude="0, 0, 380" duration="0.5"/>
   </loadcase>
 
   <loadcase id="case_3">
@@ -50,18 +50,20 @@
            unit="0.005,0.005,0.005" 
            bardiam="0.001, 0.001, 0.001" 
            material="steel"
+	   hull="0"
+	   structure="bars"
            />
 
         <global acceleration="0.0, -9.8067, 0.0"/>
 
-  <load queue="case_1,case_2,case_3"/>
+  <load id="case_1"/>
 
   </simulation>
 
   <optimization simulation="bracket_sim">
-      <rule method="remove_low_stress" threshold="7%" 
-frequency="35000"/>
-      <stop metric="iteration" threshold="10"/>
+      <rule method="remove_low_stress" threshold="10%" 
+frequency="25000"/>
+      <stop metric="iteration" threshold="5"/>
   </optimization>
 
   <output id="model" simulation="bracket_sim">
