@@ -9,7 +9,7 @@
 
 	<volume id="anchor"
 	primitive="stl"
-	url="anchor.stl"
+	url="anchor_large.stl"
 	units="mm"
 	color="1 0 0"
 	alpha="0.5"
@@ -23,8 +23,8 @@
 	alpha="0.5"
 	/>
 	
-	<loadcase id="case"> 
-		<anchor volume="anchor" />
+	<loadcase id="case">
+		<anchor volume="anchor" /> 
 		<force volume="load" magnitude="0 360 270" />
 	</loadcase>	
 	
@@ -37,7 +37,7 @@
 
 	<simulation id="bracket_sim" volume="geBracket">
 		<lattice fill="space"
-			unit=".007 0.005 0.005"
+			unit=".004 0.005 0.005"
 			bardiam="0.001 0.001 0.001"
 			material="steel"
 			hull="1"
@@ -52,8 +52,8 @@
 
 	<optimization simulation="bracket_sim">
 		<rule method="remove_low_stress" threshold="10%" 
-frequency="25000" />
-		<stop metric="iterations" threshold="20" />
+frequency="50000" />
+		<stop metric="iterations" threshold="1000" />
 	</optimization>
 
 	<output id="model" simulation="bracket_sim"> </output>
