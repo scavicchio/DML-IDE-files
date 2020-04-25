@@ -25,7 +25,7 @@
 	
 	<loadcase id="case1">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="0 -4000 270" />
+		<force volume="load" magnitude="0 -4000 0" />
 	</loadcase>
 
 	<loadcase id="case2">
@@ -42,7 +42,7 @@
 
 	<simulation id="bracket_sim" volume="geBracket">
 		<lattice fill="space"
-			unit=".001 0.005 0.005"
+			unit=".001 0.001 0.001"
 			bardiam="0.001 0.001 0.001"
 			material="steel"
 			hull="1"
