@@ -42,14 +42,14 @@
 
 	<simulation id="bracket_sim" volume="geBracket">
 		<lattice fill="space"
-			unit=".001 0.001 0.001"
+			unit=".002 0.001 0.001"
 			bardiam="0.001 0.001 0.001"
 			material="titanium"
 			hull="1"
 			structure="bars"
 		/>
 		
-		<damping velocity="0.01">
+		<damping velocity="0.01"/>
 
 		<load queue="case1,case2" />
 	
