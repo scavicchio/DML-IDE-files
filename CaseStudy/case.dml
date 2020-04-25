@@ -44,7 +44,7 @@
 		<lattice fill="space"
 			unit=".001 0.001 0.001"
 			bardiam="0.001 0.001 0.001"
-			material="steel"
+			material="titanium"
 			hull="1"
 			structure="bars"
 		/>

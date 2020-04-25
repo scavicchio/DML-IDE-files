@@ -44,7 +44,7 @@
 			structure="bars"
 		/>
 		
-		<global acceleration="0.0 -9.8067 0.0" />
+		<damping velocity="0.02" />
 
 		<load id="case" />
 	
@@ -52,8 +52,8 @@
 
 	<optimization simulation="bracket_sim">
 		<rule method="remove_low_stress" threshold="10%" 
-frequency="50000" />
-		<stop metric="iterations" threshold="1000" />
+frequency="20000" />
+		<stop metric="iterations" threshold="250" />
 	</optimization>
 
 	<output id="model" simulation="bracket_sim"> </output>
