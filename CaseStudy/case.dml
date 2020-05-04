@@ -23,15 +23,35 @@
 	alpha="0.5"
 	/>
 	
-	<loadcase id="case1">
+	<loadcase id="Standing Up">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="0 -4000 0" />
+		<force volume="load" magnitude="650 204 -1428" />
 	</loadcase>
 
-	<loadcase id="case2">
+	<loadcase id="Standing">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="3000 0 0" />
+		<force volume="load" magnitude="576 121 -1947" />
+	</loadcase>	
+
+	<loadcase id="Stairs Up">
+		<anchor volume="anchor" /> 
+		<force volume="load" magnitude="712 657 -2000" />
 	</loadcase>		
+
+	<loadcase id="Jogging">
+		<anchor volume="anchor" /> 
+		<force volume="load" magnitude="774 771 -2852" />
+	</loadcase>		
+
+	<loadcase id="ISO Stem">
+		<anchor volume="anchor" /> 
+		<force volume="load" magnitude="0 0 -2300" />
+	</loadcase>		
+
+	<loadcase id="ISO Neck">
+		<anchor volume="anchor" /> 
+		<force volume="load" magnitude="0 0 -5300" />
+	</loadcase>			
 	
 	<material id="titanium"
 		name="Ti-6AI-4V"
@@ -42,7 +62,7 @@
 
 	<simulation id="bracket_sim" volume="geBracket">
 		<lattice fill="space"
-			unit=".002 0.001 0.001"
+			unit=".001 0.001 0.001"
 			bardiam="0.001 0.001 0.001"
 			material="titanium"
 			hull="1"
@@ -57,7 +77,7 @@
 
 	<optimization simulation="bracket_sim">
 		<rule method="remove_low_stress" threshold="3%" 
-frequency="50000" />
+frequency="100000" />
 		<stop metric="weight" threshold="10%" />
 	</optimization>
 
