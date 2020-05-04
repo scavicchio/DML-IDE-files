@@ -2,14 +2,14 @@
 
 	<volume id =  "geBracket"
 	primitive="stl"
-	url="Original.stl"
+	url="Original_simple.stl"
 	units="mm"
 	color="0.5 0.5 0.5"
 	/>
 
 	<volume id="anchor"
 	primitive="stl"
-	url="Anchor.stl"
+	url="anchor_square.stl"
 	units="mm"
 	color="1 0 0"
 	alpha="0.5"
@@ -17,7 +17,7 @@
 	
 	<volume id="load"
 	primitive="stl"
-	url="Load.stl"
+	url="load_square.stl"
 	units="mm"
 	color="0 1 0"
 	alpha="0.5"
@@ -25,32 +25,32 @@
 	
 	<loadcase id="Standing Up">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="650 204 -1428" />
+		<force volume="load" magnitude="1428 650 204" duration="0.1"/>
 	</loadcase>
 
 	<loadcase id="Standing">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="576 121 -1947" />
+		<force volume="load" magnitude="1947 576 121" duration="0.1" />
 	</loadcase>	
 
 	<loadcase id="Stairs Up">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="712 657 -2000" />
+		<force volume="load" magnitude="2000 712 675" duration="0.1"/>
 	</loadcase>		
 
 	<loadcase id="Jogging">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="774 771 -2852" />
+		<force volume="load" magnitude="2852 774 771" duration="0.1"/>
 	</loadcase>		
 
 	<loadcase id="ISO Stem">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="0 0 -2300" />
+		<force volume="load" magnitude="2300 0 0" duration="0.1"/>
 	</loadcase>		
 
 	<loadcase id="ISO Neck">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="0 0 -5300" />
+		<force volume="load" magnitude="5300 0 0" duration="0.01"/>
 	</loadcase>			
 	
 	<material id="titanium"
@@ -62,8 +62,8 @@
 
 	<simulation id="bracket_sim" volume="geBracket">
 		<lattice fill="space"
-			unit=".001 0.001 0.001"
-			bardiam="0.001 0.001 0.001"
+			unit=".002 0.001 0.001"
+			bardiam="0.003 0.001 0.001"
 			material="titanium"
 			hull="1"
 			structure="bars"
@@ -71,14 +71,14 @@
 		
 		<damping velocity="0.01"/>
 
-		<load queue="case1,case2" />
+		<load queue="Standing Up,Standing,Stairs Up,Jogging,ISO Stem, ISO Neck" />
 	
 	</simulation>
 
 	<optimization simulation="bracket_sim">
-		<rule method="remove_low_stress" threshold="3%" 
-frequency="100000" />
-		<stop metric="weight" threshold="10%" />
+		<rule method="remove_low_stress" threshold="5%" 
+frequency="600000" />
+		<stop metric="weight" threshold="50%" />
 	</optimization>
 
 	<output id="model" simulation="bracket_sim"> </output>
