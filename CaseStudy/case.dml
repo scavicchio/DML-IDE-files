@@ -50,34 +50,34 @@
 
 	<loadcase id="ISO Neck">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="5300 0 0" duration="0.01"/>
+		<force volume="load" magnitude="5300 0 0" duration="0.1"/>
 	</loadcase>			
 	
 	<material id="titanium"
 		name="Ti-6AI-4V"
-		elasticity="104.0 GPa"
+		elasticity="113.8 GPa"
 		yield="880.0 Mpa"
-		density="4.429 gcc"
+		density="4.43 gcc"
 	/>
 
 	<simulation id="bracket_sim" volume="geBracket">
 		<lattice fill="space"
 			unit=".002 0.001 0.001"
-			bardiam="0.003 0.001 0.001"
+			bardiam="0.001 0.001 0.001"
 			material="titanium"
 			hull="1"
 			structure="bars"
 		/>
 		
-		<damping velocity="0.01"/>
+		<damping velocity="0.02"/>
 
-		<load queue="Standing Up,Standing,Stairs Up,Jogging,ISO Stem, ISO Neck" />
+		<load queue="Standing Up,Standing,Stairs Up,Jogging, ISO Stem, ISO Neck" />
 	
 	</simulation>
 
 	<optimization simulation="bracket_sim">
 		<rule method="remove_low_stress" threshold="5%" 
-frequency="600000" />
+frequency="400000" />
 		<stop metric="weight" threshold="50%" />
 	</optimization>
 

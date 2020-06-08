@@ -37,7 +37,7 @@
 
 	<simulation id="bracket_sim" volume="original">
 		<lattice fill="space"
-			unit=".002 0.001 0.001"
+			unit=".003 0.001 0.001"
 			bardiam="0.001 0.001 0.001"
 			material="Versatile Plastic"
 			hull="1"
@@ -51,8 +51,8 @@
 	</simulation>
 
 	<optimization simulation="bracket_sim">
-		<rule method="remove_low_stress" threshold="3%" 
-frequency="25000" />
+		<rule method="remove_low_stress" threshold="5%" 
+frequency="10000" />
 		<stop metric="weight" threshold="10%" />
 	</optimization>
 
