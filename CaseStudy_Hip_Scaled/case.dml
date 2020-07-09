@@ -2,14 +2,14 @@
 
 	<volume id =  "geBracket"
 	primitive="stl"
-	url="Original_2mm_remesh.stl"
+	url="Original_2mm_remesh_A.stl"
 	units="mm"
 	color="0.5 0.5 0.5"
 	/>
 
 	<volume id="anchor"
 	primitive="stl"
-	url="ISO_Stem_Anchor.STL"
+	url="ISO_Stem_Anchor_A.stl"
 	units="mm"
 	color="1 0 0"
 	alpha="0.5"
