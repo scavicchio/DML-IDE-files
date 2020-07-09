@@ -2,14 +2,14 @@
 
 	<volume id =  "geBracket"
 	primitive="stl"
-	url="Original_simple.stl"
+	url="Original_2mm_remesh.stl"
 	units="mm"
 	color="0.5 0.5 0.5"
 	/>
 
 	<volume id="anchor"
 	primitive="stl"
-	url="anchor_square.stl"
+	url="ISO_Stem_Anchor.STL"
 	units="mm"
 	color="1 0 0"
 	alpha="0.5"
@@ -17,7 +17,7 @@
 	
 	<volume id="load"
 	primitive="stl"
-	url="load_square.stl"
+	url="Load.stl"
 	units="mm"
 	color="0 1 0"
 	alpha="0.5"
@@ -25,22 +25,23 @@
 	
 	<loadcase id="Standing Up">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="1428 650 204" duration="0.1"/>
+		<force volume="load" magnitude="1428 650 204" 
+duration="0.05"/>
 	</loadcase>
 
 	<loadcase id="Standing">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="1947 576 121" duration="0.1" />
+		<force volume="load" magnitude="1947 576 121" duration="0.05" />
 	</loadcase>	
 
 	<loadcase id="Stairs Up">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="2000 712 675" duration="0.1"/>
+		<force volume="load" magnitude="2000 712 675" duration="0.05"/>
 	</loadcase>		
 
 	<loadcase id="Jogging">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="2852 774 771" duration="0.1"/>
+		<force volume="load" magnitude="2852 774 771" duration="0.05"/>
 	</loadcase>		
 
 	<loadcase id="ISO Stem">
@@ -71,13 +72,13 @@
 		
 		<damping velocity="0.02"/>
 
-		<load queue="Standing Up,Standing,Stairs Up,Jogging, ISO Stem, ISO Neck" />
+		<load queue="Standing Up,Standing,Stairs Up,Jogging" />
 	
 	</simulation>
 
 	<optimization simulation="bracket_sim">
 		<rule method="remove_low_stress" threshold="5%" 
-frequency="400000" />
+frequency="200000" />
 		<stop metric="weight" threshold="50%" />
 	</optimization>
 
