@@ -25,7 +25,7 @@
 
 	<loadcase id="case1">
 		<anchor volume="anchor" /> 
-		<force volume="load" magnitude="0 -4000 270" />
+		<force volume="load" magnitude="3000 -4000 0" />
 	</loadcase>
 
 	<loadcase id="case2">
@@ -42,7 +42,7 @@
 
 	<simulation id="bracket_sim" volume="geBracket">
 		<lattice fill="space"
-			unit=".003 0.005 0.005"
+			unit=".004 0.005 0.005"
 			bardiam="0.0015 0.001 0.001"
 			material="titanium"
 			hull="0"
@@ -51,14 +51,14 @@
 
 		<damping velocity="0.01"/>
 
-		<load queue="case1,case2" />
+		<load id="case1" />
 
 	</simulation>
 
 	<optimization simulation="bracket_sim">
-		<rule method="remove_low_stress" threshold="3%" 
-frequency="50000" />
-		<stop metric="weight" threshold="50%" />
+		<rule method="remove_low_stress" threshold="7%" 
+frequency="15000" regenRate="10%" regenThreshold="50%"/>
+		<stop metric="iterations" threshold="250" />
 	</optimization>
 
 	<output id="model" simulation="bracket_sim"> </output>
